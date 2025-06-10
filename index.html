@@ -5,49 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>교내 맛집 & 공부 공간 리뷰</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .tab-section { display: none; }
+    .tab-section.active { display: block; }
+    .tab-buttons button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
   <!-- 상단: 로고 및 네비게이션 -->
   <header>
     <h1>우리 캠퍼스 리뷰</h1>
-    <nav>
-      <ul>
-        <li><a href="#home">홈</a></li>
-        <li><a href="#food">맛집</a></li>
-        <li><a href="#study">공부공간</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- 중단: 오늘의 추천 장소 -->
-  <section id="home">
-    <h2>오늘의 추천 장소</h2>
-    <div class="recommendations">
-      <div class="card">
-        <h3>맛나유부</h3>
-        <p>가성비 좋은 유부초밥</p>
-      </div>
-      <div class="card">
-        <h3>☕ 카페 지브라운</h3>
-        <p>분위기 좋은 캠퍼스 내부 카페</p>
-      </div>
-      <div class="card">
-        <h3>📖 큐브 </h3>
-        <p>조용한 공부 공간</p>
-      </div>
-    </div>
-  </section>
+  <!-- 버튼: 카테고리 선택 -->
+  <div class="tab-buttons">
+    <button onclick="showSection('food')">맛집 보기</button>
+    <button onclick="showSection('study')">공부 공간 보기</button>
+  </div>
 
-  <!-- 하단: 카테고리 버튼 및 안내 -->
-  <footer>
-    <h3>카테고리 바로가기</h3>
-    <button onclick="location.href='#food'">맛집 보기</button>
-    <button onclick="location.href='#study'">공부 공간 보기</button>
-    <p>신입생도, 교환학생도 환영합니다! 쉽게 캠퍼스를 탐험해보세요.</p>
-  </footer>
-
-  <!-- 맛집 리뷰 페이지 -->
-  <section id="food">
+  <!-- 섹션 1: 맛집 -->
+  <section id="food" class="tab-section active">
     <h2>맛집 추천 - 일식</h2>
     <div class="review-card">
       <img src="img/korean1.jpg" alt="스시하쿠">
@@ -59,13 +40,10 @@
       <p>⭐ 별점: 4.3 / 5</p>
     </div>
     <button>다음 장소 보기</button>
-    <nav>
-      <a href="#">일식</a> | <a href="#">분식</a> | <a href="#">카페</a>
-    </nav>
   </section>
 
-  <!-- 공부 공간 리뷰 페이지 -->
-  <section id="study">
+  <!-- 섹션 2: 공부 공간 -->
+  <section id="study" class="tab-section">
     <h2>스터디 공간 추천 - 조용한 장소</h2>
     <div class="review-card">
       <img src="img/library.jpg" alt="큐브">
@@ -79,5 +57,20 @@
     </div>
     <button>다음 장소 보기</button>
   </section>
+
+  <!-- 하단 안내 -->
+  <footer>
+    <p>신입생도, 교환학생도 환영합니다! 쉽게 캠퍼스를 탐험해보세요.</p>
+  </footer>
+
+  <!-- 탭 전환 스크립트 -->
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.tab-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 </body>
 </html>
